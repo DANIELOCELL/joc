@@ -6,8 +6,15 @@ public class HabitacioFosca extends Habitacio {
     }
 
     // TO DO: canviar per utilitzarItem()
-
-
+    public String iluminarHabitacio(Jugador jugador){
+        if (jugador.getItemInventari("Llanterna")){
+            return super.toString();
+        } else {
+            return "---" + "---\n" +
+                    "No veus res. Necessites una llanterna!\n" +
+                    "Sortides visibles: cap";
+        }
+    }
 
     @Override
     public String toString() {
@@ -28,15 +35,4 @@ public class HabitacioFosca extends Habitacio {
             return super.getItem();
         }
     }
-
-    public void utilitzarItem(Item item){
-        if(item.getNom().equals("Llanterna")){
-            this.illuminada = true;
-            System.out.println("Has ences la llantena i l'habitació ja no esta a les fosques");
-            System.out.println(super.toString());
-        }else{
-            super.utilitzarItem(item);
-        }
-    }
 }
-<

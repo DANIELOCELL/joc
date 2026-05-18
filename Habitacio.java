@@ -34,7 +34,7 @@ public class Habitacio {
         this.item = null;
     }
 
-
+    @Override
     public String toString() {
         StringBuilder sortidesList = new StringBuilder();
         for (Direccio d : sortides.keySet()) {
