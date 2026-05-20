@@ -1,38 +1,33 @@
 public class HabitacioFosca extends Habitacio {
-    private boolean illuminada = false;
+    private boolean iluminada;
 
-    public HabitacioFosca(String nom, String descripcio){
+    public HabitacioFosca(String nom, String descripcio) {
         super(nom, descripcio);
+        this.iluminada = false;
     }
 
-    // TO DO: canviar per utilitzarItem()
-    public String iluminarHabitacio(Jugador jugador){
-        if (jugador.getItemInventari("Llanterna")){
-            return super.toString();
+    public String iluminarHabitacio(Jugador jugador) {
+        if (jugador.getItemInventari("Llanterna")) {
+            iluminada = true;
+            return "Encens la llanterna i la foscor desapareix.\n" + super.toString();
         } else {
-            return "---" + "---\n" +
-                    "No veus res. Necessites una llanterna!\n" +
-                    "Sortides visibles: cap";
+            return "No pots veure res. Et falta una llanterna.\nSortides visibles: cap";
         }
     }
 
     @Override
     public String toString() {
-        if (!illuminada) {
-            return "L'habitació és a les fosques, no es veu res.";
+        if (!iluminada) {
+            return "Estàs en una habitació completament fosca. No es veu res.";
         }
-        else {
-            return super.toString();
-        }
+        return super.toString();
     }
 
     @Override
-    public Item getItem(){
-        if (!illuminada) {
+    public Item getItem() {
+        if (!iluminada) {
             return null;
         }
-        else {
-            return super.getItem();
-        }
+        return super.getItem();
     }
 }
